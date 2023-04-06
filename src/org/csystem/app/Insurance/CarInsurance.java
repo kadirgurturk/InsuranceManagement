@@ -41,6 +41,16 @@ public class CarInsurance extends Insurance{
 
     @Override
     public String toString() {
-        return String.format("Insurance Type: " + type.toString());
+        return String.format(
+                "--------------------------------------"+ "\n"+
+                "Sigorta Türü: " + type.toString() +"\n" +
+                "Sigorta Baslangici: " + super.getStartOfInsurance() +"\n" +
+                "Sigorta Bitisi: " + super.getFinishOfInsurance() +"\n" +
+                        "Araba Modeli: " + carModel +"\n" +
+                        "Arabanın Yası: " + carAge +"\n" +
+                        "Arabanın Hasarı var mı: " + isDamaged +"\n" +
+                        "Sigorta Ucreti: " + calculate() +"\n"+
+                        "--------------------------------------"+ "\n"
+        );
     }
 }

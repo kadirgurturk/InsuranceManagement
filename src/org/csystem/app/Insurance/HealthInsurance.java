@@ -44,6 +44,16 @@ public class HealthInsurance extends Insurance{
 
     @Override
     public String toString() {
-        return String.format("Insurance Type: " + type.toString());
+      return String.format(
+              "--------------------------------------"+ "\n"+
+                        "Sigorta Türü: " + type.toString() +"\n" +
+                        "Sigorta Baslangici: " + super.getStartOfInsurance() +"\n" +
+                        "Sigorta Bitisi: " + super.getFinishOfInsurance() +"\n" +
+                        "Kisinin Yası: " + age +"\n" +
+                        "Kisinin Kronik Rahatsızlıgı Var mı: " + isChronical +"\n" +
+                        "Kisinin Meslegi Tehlikeli mi: " + isJobDangerous +"\n" +
+                        "Sigorta Ucreti: " + calculate() +"\n"+
+                                "--------------------------------------"+ "\n"
+        );
     }
 }

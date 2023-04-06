@@ -39,6 +39,15 @@ public class TravelInsurance extends Insurance{
 
     @Override
     public String toString() {
-        return String.format("Insurance Type: " + type.toString());
+        return String.format(
+                "--------------------------------------"+ "\n"+
+                        "Sigorta Türü: " + type.toString() +"\n" +
+                        "Sigorta Baslangici: " + super.getStartOfInsurance() +"\n" +
+                        "Sigorta Bitisi: " + super.getFinishOfInsurance() +"\n" +
+                        "Seyehat Edilecek Yer Tehlikeli mi: " + isDangerousPlace +"\n" +
+                        "Seyehat Edilecek Yer Farklı Kıtada mi: " + isDangerousPlace +"\n" +
+                        "Sigorta Ucreti: " + calculate() +"\n"+
+                        "--------------------------------------"+ "\n"
+        );
     }
 }

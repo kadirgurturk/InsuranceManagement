@@ -2,7 +2,7 @@ package org.csystem.app.Address;
 
 import java.util.Iterator;
 
-public class BusinessAddress implements Address{
+public class BusinessAddress implements Address ,Comparable<Address>{
 
     public String country;
     public String city;
@@ -55,5 +55,29 @@ public class BusinessAddress implements Address{
         this.country = country;
     }
 
+    @Override
+    public int hashCode() {
+        return getCompanyName().hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof HomeAddress && getCountry().equals(((HomeAddress) obj).country) && getStreet().equals(((HomeAddress) obj).street) &&
+                getCity().equals(((HomeAddress) obj).city);
+    }
+
+    @Override
+    public String toString() {
+        return "--------------------------------------"+ "\n"+
+                "Ulke: " + country +"\n" +
+                "Sehir: " + city +"\n" +
+                "Mahalle: " + street +"\n" +
+                "Sirket İsmi: " + companyName +"\n" +
+                "--------------------------------------"+ "\n";
+    }
+
+    @Override
+    public int compareTo(Address o) {
+        return getCountry().compareTo(o.getCountry());
+    }
 }

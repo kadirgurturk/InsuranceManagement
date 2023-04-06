@@ -1,6 +1,6 @@
 package org.csystem.app.Address;
 
-public class HomeAddress implements Address{
+public class HomeAddress implements Address, Comparable<Address>{
     public String country;
     public String city;
     public String street;
@@ -39,5 +39,30 @@ public class HomeAddress implements Address{
     @Override
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof HomeAddress && getCountry().equals(((HomeAddress) obj).country) && getStreet().equals(((HomeAddress) obj).street) &&
+                getCity().equals(((HomeAddress) obj).city);
+    }
+
+    @Override
+    public String toString() {
+        return "--------------------------------------"+ "\n"+
+                "Ülke: " + country +"\n" +
+                "Şehir: " + city +"\n" +
+                "Mahalle: " + street +"\n" +
+                "--------------------------------------"+ "\n";
+    }
+
+    @Override
+    public int compareTo(Address o) {
+        return getCountry().compareTo(o.getCountry());
     }
 }

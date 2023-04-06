@@ -2,6 +2,7 @@ package org.csystem.app.Account;
 
 import org.csystem.app.Address.AddressManager;
 import org.csystem.app.Address.Address;
+import org.csystem.app.Exceptions.InvalidAuthenticationException;
 import org.csystem.app.Insurance.Insurance;
 
 import java.util.ArrayList;
@@ -57,18 +58,31 @@ public abstract class Account implements Comparable<Account>{
 
     public void login(String email, String password)
     {
-        if(user.getEmail() == email && user.getPassword() == password){
-            authenticationStatus = AuthenticationStatus.SUCCESS;
-        }else{
-            //TODO... InvalidAuthenticationException
-        }
+       try {
+           if(user.getEmail() == email && user.getPassword() == password){
+               authenticationStatus = AuthenticationStatus.SUCCESS;
+           }else{
+               throw new InvalidAuthenticationException("Giriş Basarisiz");
+           }
+       }catch (InvalidAuthenticationException exp){
+           System.out.println(exp.getMessage());
+       }
     }
 
     public void addAddresses(Address address)
     {
-        if (authenticationStatus == AuthenticationStatus.SUCCESS) {
-            AddressManager.addAddress(user,address);
+        try {
+            if (authenticationStatus == AuthenticationStatus.SUCCESS) {
+                AddressManager.addAddress(user,address);
+            }else{
+                throw new InvalidAuthenticationException("Giriş Olmadan Bu Islem Yapılamaz");
+            }
+        }catch (InvalidAuthenticationException exp){
+            System.out.println(exp.getMessage());
         }
+
+
+
     }
 
     public User getUser()

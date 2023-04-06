@@ -101,6 +101,10 @@ public class User {
         return lastVisitDate;
     }
 
+    public void setLastVisitDate(LocalDate lastVisitDate) {
+        this.lastVisitDate = lastVisitDate;
+    }
+
     public static class UserBuilder
     {
         private String name;
